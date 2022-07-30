@@ -21,4 +21,6 @@ from myapp import views as myapp_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', myapp_views.index, name='index'),
+    # path('flower/<int:id>/', myapp_views.detail, name='detail'),
+    path('flower/<slug:slug>', myapp_views.detail, name='detail'),
 ]
