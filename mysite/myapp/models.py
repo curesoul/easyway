@@ -12,6 +12,7 @@ class Category(models.Model):
 class Flower(models.Model):
     title = models.CharField(max_length=255, default='')
     description = models.TextField(default='')
+    category = models.ForeignKey(Category, null=True, on_delete=models.PROJECT)
     slug = models.SlugField(blank=True, default='')
 
     def __str__(self):
