@@ -21,8 +21,19 @@
                         <button type="button" class="btn btn-sm btn-outline-secondary"><a
                                 href="adminmyapp/flower/{{ flower.id }}/delete/" class="card_link">Delete</a></button>
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    <small class="text-muted"><a href="#" class="card_link">{{ flower.category }}</a></small>
                 </div>
+                <hr>
+                All flowers in <strong>{{ flower.category }}</strong> category: <br>
+                {% for flower_cate in flower.category.flower_set.all %}
+                <a href="#" class="card_link">{{ flower_cate }}</a><br>
+                {% endfor %}
+
+                <hr>
+                {% for flower_tags in flower.tags.all %}
+                <a href="#" class="card_link">{{ flower_tags }}</a>
+                {% endfor %}
+
             </div>
         </div>
     </div>
