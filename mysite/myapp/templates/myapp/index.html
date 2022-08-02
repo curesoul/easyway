@@ -30,8 +30,8 @@
                 {% endfor %}
 
                 <hr>
-                {% for flower_tags in flower.tags.all %}
-                <a href="#" class="card_link">{{ flower_tags }}</a>
+                {% for tag in flower.tags.all %}
+                <a href="{% url 'tags' tag.slug %}" class="card_link">{{ tag }}</a>
                 {% endfor %}
 
             </div>
