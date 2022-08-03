@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from myapp.models import Flower
 from .forms import MyForm
 
+
 def index(request):
     q = request.GET.get('q', None)
     items = ''
