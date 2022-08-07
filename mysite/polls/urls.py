@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:question_id>/', views.detail, name='detail'),
     path('<int:question_id>/results/', views.results, name='results'),
     path('<int:question_id/vote/', views.vote, name='vote'),
+    path('form/', views.question_form, name='question_form'),
 ]

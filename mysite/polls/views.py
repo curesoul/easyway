@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
 from .models import Question
+from .forms import QuestionForm
 
 
 def index(request):
@@ -22,3 +23,14 @@ def results(request, question_id):
 
 def vote(request, question_id):
     return
+
+
+def question_form(request):
+    submitted = False
+    if request.POST == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect()
+    form = QuestionForm
+    return render(request, 'polls/form.html', {'form': form})
