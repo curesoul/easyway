@@ -3,11 +3,16 @@
 {% block content %}
 
 <h1>Test Form</h1>
-<form action="/" method="post">
+
+{% if submitted %}
+You venue was submitted successfully.
+{% else %}
+<form action="" method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
+{% endif %}
 
 
 {% endblock %}

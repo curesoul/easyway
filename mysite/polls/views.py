@@ -31,6 +31,9 @@ def question_form(request):
         form = QuestionForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect()
-    form = QuestionForm
-    return render(request, 'polls/form.html', {'form': form})
+            return HttpResponseRedirect('/form?submitted=True')
+    else:
+        form = QuestionForm
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'polls/form.html', {'form': form, 'submitted': submitted})
