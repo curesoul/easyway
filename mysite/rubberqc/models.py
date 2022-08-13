@@ -5,7 +5,7 @@ class Customer(models.Model):
     name = models.CharField(max_length=255)
 
 
-class Product(models.Model):
+class SpecsProduct(models.Model):
     PRODUCT_TYPE = [
         (0, '塑炼'),
         (1, 'A炼'),
@@ -33,8 +33,29 @@ class Product(models.Model):
 
 
 class PurchaseOrder(models.Model):
+    product = models.ManyToManyField(choices=Product)
     lot = models.IntegerField(verbose_name='Lot')
 
 
-class Mastication(models.Model):
+class MixSSpecs(models.Model):
+    # customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    mv = models.FloatField(verbose_name='门尼')
+    mv_min = models.FloatField(verbose_name='门尼最小值')
+    mv_max = models.FloatField(verbose_name='门尼最大值')
+
+
+class MixSCheckResult(models.Model):
+    specs = models.ForeignKey(MixSSpecs, on_delete=models.CASCADE)
+
+
+class MixSCheckDetail(models.Model):
+    check_result = models.ForeignKey(MixSCheckResult, on_delete=models.CASCADE)
     batch = models.IntegerField(default=1)
+    mv = models.FloatField(verbose_name='门尼值')
+
+
+class MixA(models.Model):
+
+
+class MixB(models.Model):
