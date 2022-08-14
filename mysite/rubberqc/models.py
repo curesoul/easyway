@@ -5,7 +5,7 @@ class Customer(models.Model):
     name = models.CharField(max_length=255)
 
 
-class SpecsProduct(models.Model):
+class ItemSpecs(models.Model):
     PRODUCT_TYPE = [
         (0, '塑炼'),
         (1, 'A炼'),
@@ -33,20 +33,33 @@ class SpecsProduct(models.Model):
 
 
 class PurchaseOrder(models.Model):
-    product = models.ManyToManyField(choices=Product)
+    item = models.ManyToManyField(ItemSpecs)
     lot = models.IntegerField(verbose_name='Lot')
 
 
-class MixSSpecs(models.Model):
+class MixSItemSpecs(models.Model):
     # customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    mv = models.FloatField(verbose_name='门尼')
+    mv = models.CharField(max_length=255, verbose_name='门尼')
     mv_min = models.FloatField(verbose_name='门尼最小值')
     mv_max = models.FloatField(verbose_name='门尼最大值')
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = verbose_name_plural = '塑炼检查标准'
+
 
 class MixSCheckResult(models.Model):
-    specs = models.ForeignKey(MixSSpecs, on_delete=models.CASCADE)
+    item = models.ForeignKey(MixSItemSpecs, on_delete=models.CASCADE, verbose_name='品名')
+    lot = models.IntegerField(verbose_name='Lot')
+
+    def __str__(self):
+        return str(self.lot)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '塑炼成绩表'
 
 
 class MixSCheckDetail(models.Model):
@@ -54,8 +67,13 @@ class MixSCheckDetail(models.Model):
     batch = models.IntegerField(default=1)
     mv = models.FloatField(verbose_name='门尼值')
 
+    def __str__(self):
+        return self.mv
 
-class MixA(models.Model):
+    class Meta:
+        verbose_name = verbose_name_plural = '检查详情'
+
+# class MixA(models.Model):
 
 
-class MixB(models.Model):
+# class MixB(models.Model):
