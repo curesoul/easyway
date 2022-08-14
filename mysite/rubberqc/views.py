@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 from .forms import MixSForm
 
@@ -8,7 +9,7 @@ def index(request):
         form = MixSForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
-        else:
-            form = MixSForm()
-        return render(request, 'rubberqc/index.html', {'form': form})
+            return HttpResponseRedirect('')
+    else:
+        form = MixSForm()
+    return render(request, 'rubberqc/index.html', {'form': form})

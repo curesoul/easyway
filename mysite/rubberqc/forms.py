@@ -6,4 +6,4 @@ from .models import MixSItemSpecs, MixSCheckResult, MixSCheckDetail
 class MixSForm(forms.ModelForm):
     class Meta:
         model = MixSCheckDetail
-        fields = '__all__'
+        fields = ['check_result', 'batch', 'mv']

@@ -9,6 +9,8 @@ class MixSCheckDetailInline(admin.TabularInline):
 
 
 class MixSCheckResultAdmin(admin.ModelAdmin):
+    list_display = ('item', 'lot')
+    list_filter = ['lot', 'item']
     inlines = [MixSCheckDetailInline]
     # fieldsets = [
     #     (None, {'fields': ['item', 'lot']}),

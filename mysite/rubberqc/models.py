@@ -68,7 +68,7 @@ class MixSCheckDetail(models.Model):
     mv = models.FloatField(verbose_name='门尼值')
 
     def __str__(self):
-        return self.mv
+        return str(self.batch)
 
     class Meta:
         verbose_name = verbose_name_plural = '检查详情'
