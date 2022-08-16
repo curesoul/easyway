@@ -1,3 +1,15 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
-# Create your views here.
+from .forms import MixSForm
+
+
+def index(request):
+    if request.method == 'POST':
+        form = MixSForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('')
+    else:
+        form = MixSForm()
+    return render(request, 'rubberqc/index.html', {'form': form})

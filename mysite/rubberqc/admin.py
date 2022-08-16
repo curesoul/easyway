@@ -1,3 +1,23 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import MixSItemSpecs, MixSCheckResult, MixSCheckDetail
+
+
+class MixSCheckDetailInline(admin.TabularInline):
+    model = MixSCheckDetail
+    extra = 100
+
+
+class MixSCheckResultAdmin(admin.ModelAdmin):
+    list_display = ('item', 'lot')
+    list_filter = ['lot', 'item']
+    inlines = [MixSCheckDetailInline]
+    # fieldsets = [
+    #     (None, {'fields': ['item', 'lot']}),
+    #     ('检查详情', {'fields': ['id', 'batch', 'mv']}),
+    # ]
+
+
+admin.site.register(MixSItemSpecs)
+admin.site.register(MixSCheckDetail)
+admin.site.register(MixSCheckResult, MixSCheckResultAdmin)
