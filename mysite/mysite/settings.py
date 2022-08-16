@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'posts',
-    'rubberqc',
+    # 'rubberqc',
     'polls',
     'formtest',
     'base',
