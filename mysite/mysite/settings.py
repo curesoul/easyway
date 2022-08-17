@@ -31,9 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'posts',
-    'rubberqc',
-    'polls',
+    'mixs',
     'formtest',
     'base',
     'myapp',

@@ -28,6 +28,5 @@ urlpatterns = [
     path('tags/<slug:slug>', myapp_views.tags, name='tags'),
     path('flower/create/', myapp_views.create, name='create'),
     path('formtest/', include('formtest.urls')),
-    path('polls/', include('polls.urls')),
     path('rubberqc/', include('rubberqc.urls')),
 ]
