@@ -5,4 +5,11 @@
 
 <h1>test</h1>
 
+{% for log in logs %}
+
+{{ log.item }}--{{ log.lot }}--{{ log.batch }}--{{ log.mv }}
+<br>
+
+{% endfor %}
+
 {% endblock content %}

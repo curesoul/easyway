@@ -1,5 +1,11 @@
 from django.shortcuts import render
 
+from .models import Detail
+
 
 def index(request):
-    return render(request, 'mixs/index.html')
+    logs = Detail.objects.all()
+    context = {
+        'logs': logs
+    }
+    return render(request, 'mixs/index.html', context)
