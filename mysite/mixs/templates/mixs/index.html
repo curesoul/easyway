@@ -5,11 +5,44 @@
 
 <h1>test</h1>
 
-{% for log in logs %}
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="lot_list/">lot list</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
 
-{{ log.item }}--{{ log.lot }}--{{ log.batch }}--{{ log.mv }}
-<br>
-
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">品名</th>
+      <th scope="col">批次</th>
+      <th scope="col">回号</th>
+      <th scope="col">门尼</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for log in logs %}
+    <tr>
+      <th scope="row">{{ log.item }}</th>
+      <td>{{ log.lot }}</td>
+      <td>{{ log.batch }}</td>
+      <td>{{ log.mv }}</td>
+    </tr>
 {% endfor %}
+  </tbody>
+</table>
+
+
+
+
 
 {% endblock content %}
