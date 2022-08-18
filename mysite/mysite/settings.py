@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'mixs',
+    'mixs_dup',
+    # 'mixs',
     'formtest',
     'base',
     'myapp',
