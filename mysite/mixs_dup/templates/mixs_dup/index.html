@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+{% for pp in pps %}
+
+{{ pp.lot }} -- {{ pp.item }}
+
+{% endfor %}
+
+{% endblock content %}

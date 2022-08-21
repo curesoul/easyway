@@ -55,7 +55,7 @@ class ProductionPlan(models.Model):
     lot = models.ForeignKey(Lot, on_delete=models.PROTECT, verbose_name='批号')
 
     def __str__(self):
-        return str(self.lot.lot) + self.item.name
+        return str(self.lot.lot) + ' - ' + self.item.name
 
     class Meta:
         verbose_name = verbose_name_plural = '素炼成绩表'
@@ -67,7 +67,7 @@ class Detail(models.Model):
     mv = models.FloatField(verbose_name='门尼值')
 
     def __str__(self):
-        return str(self.item)
+        return str(self.plan)
 
     class Meta:
         verbose_name = verbose_name_plural = '详细信息'

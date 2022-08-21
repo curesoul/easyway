@@ -29,5 +29,6 @@ urlpatterns = [
     path('flower/create/', myapp_views.create, name='create'),
     path('formtest/', include('formtest.urls')),
     # path('mixs/', include('mixs.urls')),
+    path('mixs_dup/', include('mixs_dup.urls')),
 
 ]

@@ -1,3 +1,12 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Customer, Operator, Item, Lot, ProductionPlan, Detail, DetailChangeLog
+
+
+def index(request):
+    pps = ProductionPlan.objects.all()
+    context = {
+        'pps': pps
+    }
+    return render(request, 'mixs_dup/index.html', context)
+
