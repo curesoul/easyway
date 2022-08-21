@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<ul>
+{% for student in students %}
+
+<li>{{ student.name }} - {{ student.get_sex_display }}</li>
+
+
+{% endfor %}
+</ul>
+
+{% endblock content %}

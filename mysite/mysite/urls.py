@@ -30,5 +30,5 @@ urlpatterns = [
     path('formtest/', include('formtest.urls')),
     # path('mixs/', include('mixs.urls')),
     path('mixs_dup/', include('mixs_dup.urls')),
-
+    path('student/', include('student.urls')),
 ]

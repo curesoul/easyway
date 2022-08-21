@@ -3,14 +3,14 @@ from django.db import models
 
 class Student(models.Model):
     SEX_ITEMS = [
-        ('1', '男'),
-        ('2', '女'),
-        ('0', '未知'),
+        (1, '男'),
+        (2, '女'),
+        (0, '未知'),
     ]
     STATUS_ITEMS = [
-        ('0', '申请'),
-        ('1', '通过'),
-        ('2', '拒绝'),
+        (0, '申请'),
+        (1, '通过'),
+        (2, '拒绝'),
     ]
     name = models.CharField(max_length=128, verbose_name='姓名')
     sex = models.IntegerField(choices=SEX_ITEMS, verbose_name='性别')
