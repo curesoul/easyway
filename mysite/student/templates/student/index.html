@@ -5,10 +5,11 @@
 <ul>
 {% for student in students %}
 
-<li>{{ student.name }} - {{ student.get_sex_display }}</li>
-
+<li>{{ student.name }} - {{ student.get_status_display }}  - {{ student.get_sex_display }}</li>
 
 {% endfor %}
 </ul>
+
+
 
 {% endblock content %}

@@ -2,9 +2,23 @@
 
 {% block content %}
 
+
+{% if pps %}
+
+<ul>
+    {% for pp in pps %}
+        <li><a href="/mixs_dup/{{ pp.id }}">{{ pp.item }} {{ pp.lot }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+
+<p>no results.</p>
+
+{% endif %}
+
 {% for pp in pps %}
 
-{{ pp.lot }} -- {{ pp.item }}
+{{ pp.lot }} -- {{ pp.item }} 
 
 {% endfor %}
 

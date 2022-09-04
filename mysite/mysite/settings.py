@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'mix_zero',
     'student',
     'mixs_dup',
     # 'mixs',
