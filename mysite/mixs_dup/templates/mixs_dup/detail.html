@@ -2,14 +2,124 @@
 
 {% block content %}
 
-<h1>{{ detail.lot }} -- {{ detail.item }}</h1>
 
-<ul>
-{% for mv in detail.detail_set.all %}
+<h1 class="display-4 fw-bold text-center">检查成绩表</h1>
 
-    <li>{{ mv.batch }} -- {{ mv.mv }}</li>
 
-{% endfor %}
-</ul>
+<div class="container text-center">
+    <div class="row">
+        <div class="col d-flex flex-row">
+            <p class="fs-3">{{ detail.item.customer.name }}</p>
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col d-flex flex-row-reverse">
+
+            <p class="fs-5">{{ detail.created }}<br>琦光新材料科技（平湖）有限公司</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col-3">判定结果</th>
+                    <th scope="col-3">承认者</th>
+                    <th scope="col-3">担当者</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>合格</td>
+                    <td>韩昱邦</td>
+                    <td>王慧微</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th scope="col" >品名：{{ detail.item.name }}</th>
+        <th scope="col" >Lot：{{ detail.lot }}</th>
+        <th scope="col" >温度：{{ detail.item.temperature }}℃</th>
+        <th scope="col" >转子：{{ detail.item.rotor }}</th>
+
+    </tr>
+</table>
+
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+
+                <tr>
+                    <th scope="col" colspan="1">#</th>
+                    <th scope="col" colspan="1">回号</th>
+                    <th scope="col" colspan="1">门尼 | {{ detail.item.mv }}</th>
+                    <th scope="col" colspan="2">备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for mv in detail.detail_set.all|slice:":5" %}
+                <tr>
+                    <th scope="row" colspan="1">{{ forloop.counter }}</th>
+                    <td colspan="1">{{ mv.batch }}</td>
+                    <td colspan="1">{{ mv.mv }}</td>
+                    <td colspan="2">{{ mv.comment }}</td>
+                </tr>
+
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+
+                <tr>
+                    <th scope="col" colspan="1">#</th>
+                    <th scope="col" colspan="1">回号</th>
+                    <th scope="col" colspan="1">门尼 | {{ detail.item.mv }}</th>
+                    <th scope="col-2" colspan="2">备注</th>
+                </tr>
+                </thead>
+
+
+                <tbody>
+                {% for mv in detail.detail_set.all|slice:"5:8" %}
+                <tr>
+                    <th scope="row" colspan="1">{{ forloop.counter }}</th>
+                    <td colspan="1">{{ mv.batch }}</td>
+                    <td colspan="1">{{ mv.mv }}</td>
+                    <td colspan="2">{{ mv.comment }}</td>
+                </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 
 {% endblock content %}

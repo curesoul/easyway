@@ -6,13 +6,11 @@ from .models import Customer, Operator, Item, Lot, ProductionPlan, Detail, Detai
 def index(request):
     pps = ProductionPlan.objects.all()
     context = {
-        'pps': pps
+        'pps': pps,
     }
     return render(request, 'mixs_dup/index.html', context)
 
 
 def detail(request, pp_id):
     detail = get_object_or_404(ProductionPlan, pk=pp_id)
-    return render(request, 'mixs_dup/detail.html', {'detail': detail})
-
-
+    return render(request, 'mixs_dup/detail.html', {'detail': detail, })
