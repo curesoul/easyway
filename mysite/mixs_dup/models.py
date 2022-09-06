@@ -71,7 +71,7 @@ class Detail(models.Model):
     plan = models.ForeignKey(ProductionPlan, on_delete=models.PROTECT)
     batch = models.IntegerField(verbose_name='回数')
     mv = models.FloatField(verbose_name='门尼值')
-    comment = models.CharField(max_length=255, blank=True, verbose_name='备注')
+    comment = models.CharField(max_length=255, blank=True, verbose_name='回炼')
     shipment_status = models.BooleanField(default=False, verbose_name='出货状态')
 
     def __str__(self):

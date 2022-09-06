@@ -1,4 +1,4 @@
-{% extends 'base/base.html' %}
+{% extends 'mixs_dup/header.html' %}
 
 {% block content %}
 
@@ -12,7 +12,7 @@
             <p class="fs-3">{{ detail.item.customer.name }}</p>
         </div>
         <div class="col">
-
+                <p class="fs-3">回数：{{ detail.detail_set.all|length }}</p>
         </div>
         <div class="col d-flex flex-row-reverse">
 
@@ -56,11 +56,11 @@
 
 <table class="table table-bordered">
     <tr>
-        <th scope="col" >品名：{{ detail.item.name }}</th>
-        <th scope="col" >Lot：{{ detail.lot }}</th>
-        <th scope="col" >温度：{{ detail.item.temperature }}℃</th>
-        <th scope="col" >转子：{{ detail.item.rotor }}</th>
-
+        <th scope="col">品名：{{ detail.item.name }}</th>
+        <th scope="col">Lot：{{ detail.lot }}</th>
+        <th scope="col">温度：{{ detail.item.temperature }}℃</th>
+        <th scope="col">转子&时间：{{ detail.item.rotor }}</th>
+        <th scope="col">门尼规格：{{ detail.item.mv }}</th>
     </tr>
 </table>
 
@@ -74,17 +74,24 @@
                 <tr>
                     <th scope="col" colspan="1">#</th>
                     <th scope="col" colspan="1">回号</th>
-                    <th scope="col" colspan="1">门尼 | {{ detail.item.mv }}</th>
+                    <th scope="col" colspan="1">门尼</th>
                     <th scope="col" colspan="2">备注</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for mv in detail.detail_set.all|slice:":5" %}
+                {% for mv in detail.detail_set.all|slice:":10" %}
+
+                {% if mv.mv < detail.item.mv_min or mv.mv > detail.item.mv_max %}
+                <tr class="table-danger">
+                    {% else %}
                 <tr>
+                    {% endif %}
+
                     <th scope="row" colspan="1">{{ forloop.counter }}</th>
                     <td colspan="1">{{ mv.batch }}</td>
                     <td colspan="1">{{ mv.mv }}</td>
                     <td colspan="2">{{ mv.comment }}</td>
+
                 </tr>
 
                 {% endfor %}
@@ -99,15 +106,21 @@
                 <tr>
                     <th scope="col" colspan="1">#</th>
                     <th scope="col" colspan="1">回号</th>
-                    <th scope="col" colspan="1">门尼 | {{ detail.item.mv }}</th>
+                    <th scope="col" colspan="1">门尼</th>
                     <th scope="col-2" colspan="2">备注</th>
                 </tr>
                 </thead>
 
 
                 <tbody>
-                {% for mv in detail.detail_set.all|slice:"5:8" %}
+                {% for mv in detail.detail_set.all|slice:"10:20" %}
+
+                {% if mv.mv < detail.item.mv_min or mv.mv > detail.item.mv_max %}
+                <tr class="table-danger">
+                    {% else %}
                 <tr>
+                    {% endif %}
+
                     <th scope="row" colspan="1">{{ forloop.counter }}</th>
                     <td colspan="1">{{ mv.batch }}</td>
                     <td colspan="1">{{ mv.mv }}</td>
