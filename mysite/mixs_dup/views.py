@@ -14,3 +14,13 @@ def index(request):
 def detail(request, pp_id):
     detail = get_object_or_404(ProductionPlan, pk=pp_id)
     return render(request, 'mixs_dup/detail.html', {'detail': detail, })
+
+
+def results_sheet(request, pp_id):
+    detail = get_object_or_404(ProductionPlan, pk=pp_id)
+    batch_start = request.POST.get('batch-start', None)
+    batch_end = request.POST.get('batch-end', None)
+    batch_control = '"' + batch_start + ':' + batch_end + '"'
+    return render(request, 'mixs_dup/results_sheet.html',
+                  {'detail': detail, 'batch_start': batch_start, 'batch_end': batch_end,
+                   'batch_control': batch_control, })

@@ -29,16 +29,17 @@
             <form action="{% url 'mixs_dup:results_sheet' detail.id %}" method="post">
                 {% csrf_token %}
                 {% if error_message %} <p>{{ error_message }}</p>{% endif %}
-<!--                <label for="">选择回数：</label>-->
-<!--                <input type="text" class="text" value="" name="batch-start">-->
-<!--                <input type="text" class="text" value="" name="batch-end">-->
-<!--                <input type="button" value="确定">-->
+                <!--                <label for="">选择回数：</label>-->
+                <!--                <input type="text" class="text" value="" name="batch-start">-->
+                <!--                <input type="text" class="text" value="" name="batch-end">-->
+                <!--                <input type="button" value="确定">-->
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="起始回号" aria-label="batch-start" name="batch-start">
+                    <input type="text" class="form-control" placeholder="起始回号" aria-label="batch-start"
+                           name="batch-start">
                     <span class="input-group-text">→</span>
                     <input type="text" class="form-control" placeholder="结束回号" aria-label="batch-end" name="batch-end">
-                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">提交</button>
+                    <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">提交</button>
                 </div>
 
 
@@ -47,7 +48,7 @@
 
         </div>
         <div class="col">
-
+            {{ batch_start }} -{{ batch_end }} - {{ batch_control }}
         </div>
         <div class="col">
 
@@ -94,11 +95,11 @@
                     <th scope="col" colspan="1">#</th>
                     <th scope="col" colspan="1">回号</th>
                     <th scope="col" colspan="1">门尼</th>
-                    <th scope="col" colspan="2">备注</th>
+
                 </tr>
                 </thead>
                 <tbody>
-                {% for mv in detail.detail_set.all|slice:":10" %}
+                {% for mv in detail.detail_set.all|slice:batch_control %}
 
                 {% if mv.mv < detail.item.mv_min or mv.mv > detail.item.mv_max %}
                 <tr class="table-danger">
@@ -109,7 +110,7 @@
                     <th scope="row" colspan="1">{{ forloop.counter }}</th>
                     <td colspan="1">{{ mv.batch }}</td>
                     <td colspan="1">{{ mv.mv }}</td>
-                    <td colspan="2">{{ mv.comment }}</td>
+
 
                 </tr>
 
@@ -126,7 +127,6 @@
                     <th scope="col" colspan="1">#</th>
                     <th scope="col" colspan="1">回号</th>
                     <th scope="col" colspan="1">门尼</th>
-                    <th scope="col-2" colspan="2">备注</th>
                 </tr>
                 </thead>
 
@@ -143,7 +143,7 @@
                     <th scope="row" colspan="1">{{ forloop.counter }}</th>
                     <td colspan="1">{{ mv.batch }}</td>
                     <td colspan="1">{{ mv.mv }}</td>
-                    <td colspan="2">{{ mv.comment }}</td>
+
                 </tr>
 
                 {% endfor %}
