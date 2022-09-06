@@ -51,7 +51,7 @@
             {{ batch_start }} -{{ batch_end }} - {{ batch_control }}
         </div>
         <div class="col">
-
+            {{ detail_set }}
         </div>
         <div class="col">
             <table class="table table-bordered">
@@ -99,7 +99,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for mv in detail.detail_set.all|slice:batch_control %}
+                {% for mv in detail.detail_set.all|slice:"0:10" %}
 
                 {% if mv.mv < detail.item.mv_min or mv.mv > detail.item.mv_max %}
                 <tr class="table-danger">
